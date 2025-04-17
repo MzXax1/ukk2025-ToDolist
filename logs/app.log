@@ -1,0 +1,330 @@
+[2025-04-14 08:40:19] [User ID: Unknown, Name: Unknown] User users1 login berhasil.
+[2025-04-14 08:41:18] [User ID: 1, Name: users1] Project 'test' (ID: 56) ditambahkan oleh User ID: 1
+[2025-04-14 08:41:31] [User ID: 1, Name: users1] Project 'test' (ID: 56) dihapus oleh User ID: 1
+[2025-04-14 08:41:56] [User ID: 1, Name: users1] Project 'test' (ID: 57) ditambahkan oleh User ID: 1
+[2025-04-14 08:42:00] [User ID: 1, Name: users1] Project 'test' (ID: 57) dihapus oleh User ID: 1
+[2025-04-14 09:13:41] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 09:13:41] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 09:13:44] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 09:13:50] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 09:13:50] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 09:18:04] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 10:24:38] [User ID: 1, Name: users1] Project 'test' (ID: 58) ditambahkan oleh User ID: 1
+[2025-04-14 10:24:55] [User ID: Unknown, Name: Unknown] User  (ID: ) melakukan logout.
+[2025-04-14 10:24:55] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 10:24:57] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 10:25:44] [User ID: 1, Name: users1] Project 'test' (ID: 58) dihapus oleh User ID: 1
+[2025-04-14 10:38:43] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-14 10:38:48] [User ID: 1, Name: users1] Project 'test' (ID: 59) ditambahkan oleh User ID: 1
+[2025-04-14 10:39:02] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'asas' ke project ID: 59 dengan due date: 2025-05-03
+[2025-04-14 10:39:02] [User ID: 1, Name: users1] Task 'asas' berhasil ditambahkan dengan ID: 38
+[2025-04-14 10:42:53] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 38 menjadi: 2
+[2025-04-14 10:42:53] [User ID: 1, Name: users1] Task ID: 38 berhasil diperbarui menjadi status: 2
+[2025-04-14 10:46:01] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'adsad' ke project ID: 59 dengan due date: 2025-04-30
+[2025-04-14 10:46:01] [User ID: 1, Name: users1] Task 'adsad' berhasil ditambahkan dengan ID: 39
+[2025-04-14 10:56:04] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 10:56:14] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'ads' ke project ID: 59 dengan due date: 2025-05-01
+[2025-04-14 10:56:14] [User ID: 1, Name: users1] Task 'ads' berhasil ditambahkan dengan ID: 40
+[2025-04-14 10:56:20] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 10:56:51] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'pisang' ke project ID: 59 dengan due date: 2025-05-10
+[2025-04-14 10:56:51] [User ID: 1, Name: users1] Task 'pisang' berhasil ditambahkan dengan ID: 41
+[2025-04-14 11:04:35] [User ID: 1, Name: users1] Project 'test' (ID: 59) dihapus oleh User ID: 1
+[2025-04-14 11:09:14] [User ID: 1, Name: users1] Project 'Project Gamma' (ID: 80) dihapus oleh User ID: 1
+[2025-04-14 11:09:16] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 11:09:16] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 11:11:16] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 11:11:18] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 11:11:18] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 11:12:46] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 11:12:51] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 11:14:49] [User ID: 1, Name: users1] Project 'Project Epsilon' (ID: 82) dihapus oleh User ID: 1
+[2025-04-14 11:19:50] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 11:21:06] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 11:24:46] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 11:26:52] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-14 11:29:11] [User ID: 1, Name: users1] Task 'Task 4 for Project Alpha' (ID: 65) dihapus oleh User ID: 1
+[2025-04-14 11:30:01] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 62 menjadi: 2
+[2025-04-14 11:30:01] [User ID: 1, Name: users1] Task ID: 62 berhasil diperbarui menjadi status: 2
+[2025-04-14 11:30:25] [User ID: 1, Name: users1] Task 'Task 1 for Project Alpha' (ID: 62) dihapus oleh User ID: 1
+[2025-04-14 11:30:31] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 11:30:31] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 11:44:16] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 11:47:13] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 66 menjadi: 2
+[2025-04-14 11:47:13] [User ID: 1, Name: users1] Task ID: 66 berhasil diperbarui menjadi status: 2
+[2025-04-14 12:25:41] [User ID: 1, Name: users1] Task 'Task 5 for Project Alpha' (ID: 66) dihapus oleh User ID: 1
+[2025-04-14 12:25:44] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 63 menjadi: 2
+[2025-04-14 12:25:44] [User ID: 1, Name: users1] Task ID: 63 berhasil diperbarui menjadi status: 2
+[2025-04-14 12:32:31] [User ID: 1, Name: users1] Task 'Task 2 for Project Alpha' (ID: 63) dihapus oleh User ID: 1
+[2025-04-14 12:33:29] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 72 menjadi: 2
+[2025-04-14 12:33:29] [User ID: 1, Name: users1] Task ID: 72 berhasil diperbarui menjadi status: 2
+[2025-04-14 12:33:33] [User ID: 1, Name: users1] Task 'Write Marketing Plan' (ID: 72) dihapus oleh User ID: 1
+[2025-04-14 12:36:25] [User ID: 1, Name: users1] Task 'Test New Features' (ID: 69) dihapus oleh User ID: 1
+[2025-04-14 12:37:26] [User ID: 1, Name: users1] Task 'Research Competitors' (ID: 71) dihapus oleh User ID: 1
+[2025-04-14 12:39:49] [User ID: 1, Name: users1] Task 'Create Wireframes' (ID: 68) dihapus oleh User ID: 1
+[2025-04-14 13:03:12] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 79 menjadi: 2
+[2025-04-14 13:03:12] [User ID: 1, Name: users1] Task ID: 79 berhasil diperbarui menjadi status: 2
+[2025-04-14 13:04:51] [User ID: 1, Name: users1] Task 'Finish Documentation' (ID: 79) dihapus oleh User ID: 1
+[2025-04-14 13:31:02] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:31:02] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 13:31:07] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 13:33:48] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:33:48] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 13:33:54] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 13:49:00] [User ID: 1, Name: users1] User users1 (ID: 1) mencoba mengakses login, tetapi sudah login.
+[2025-04-14 13:50:19] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:50:19] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 13:51:27] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 13:51:28] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:51:28] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 13:55:17] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 13:55:51] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:55:51] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 13:55:58] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 13:57:36] [User ID: 1, Name: users1] Project 'adsa' (ID: 83) ditambahkan oleh User ID: 1
+[2025-04-14 13:57:45] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'sds' ke project ID: 83 dengan due date: 24443-12-12
+[2025-04-14 13:57:45] [User ID: 1, Name: users1] Task 'sds' berhasil ditambahkan dengan ID: 0
+[2025-04-14 13:57:55] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'sds' ke project ID: 83 dengan due date: 2023-12-12
+[2025-04-14 13:57:55] [User ID: 1, Name: users1] Task 'sds' berhasil ditambahkan dengan ID: 0
+[2025-04-14 13:58:03] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'sds' ke project ID: 83 dengan due date: 2027-12-12
+[2025-04-14 13:58:03] [User ID: 1, Name: users1] Task 'sds' berhasil ditambahkan dengan ID: 85
+[2025-04-14 13:58:07] [User ID: 1, Name: users1] Task 'sds' (ID: 85) dihapus oleh User ID: 1
+[2025-04-14 13:58:28] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-14 13:58:28] [User ID: 1, Name: users1] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-14 14:03:33] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-14 14:03:39] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 70 menjadi: 2
+[2025-04-14 14:03:39] [User ID: 1, Name: users1] Task ID: 70 berhasil diperbarui menjadi status: 2
+[2025-04-14 14:03:46] [User ID: 1, Name: users1] Task 'Design Database Schema' (ID: 70) dihapus oleh User ID: 1
+[2025-04-15 07:44:24] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-15 07:44:30] [User ID: 1, Name: users1] Project 'adsa' (ID: 83) dihapus oleh User ID: 1
+[2025-04-15 11:38:56] [User ID: 1, Name: users1] Project 'testing' (ID: 84) dihapus oleh User ID: 1
+[2025-04-15 11:39:00] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 11:39:02] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 11:39:04] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 11:39:06] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 81 menjadi: 2
+[2025-04-15 11:39:06] [User ID: 1, Name: users1] Task ID: 81 berhasil diperbarui menjadi status: 2
+[2025-04-15 11:40:32] [User ID: 1, Name: users1] Project 'testhapus' (ID: 85) ditambahkan oleh User ID: 1
+[2025-04-15 11:40:36] [User ID: 1, Name: users1] Project 'testhapus' (ID: 85) dihapus oleh User ID: 1
+[2025-04-15 11:41:49] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-15 11:42:34] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 11:42:34] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 11:42:40] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 11:43:12] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 84 menjadi: 2
+[2025-04-15 11:43:12] [User ID: 1, Name: users1] Task ID: 84 berhasil diperbarui menjadi status: 2
+[2025-04-15 12:49:03] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-15 12:49:25] [User ID: 1, Name: users1] Project 'Project  SpaceX' (ID: 86) ditambahkan oleh User ID: 1
+[2025-04-15 13:04:28] [User ID: 1, Name: users1] Project 'Project Beta 1' (ID: 81) diperbarui oleh User ID: 1
+[2025-04-15 13:08:14] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 1 menjadi: 2
+[2025-04-15 13:08:14] [User ID: 1, Name: users1] Task ID: 1 berhasil diperbarui menjadi status: 2
+[2025-04-15 13:08:17] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:08:17] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:23:17] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:23:17] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:26:33] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 2 menjadi: 1
+[2025-04-15 13:26:33] [User ID: 1, Name: users1] Task ID: 2 berhasil diperbarui menjadi status: 1
+[2025-04-15 13:27:18] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 2 menjadi: 2
+[2025-04-15 13:27:18] [User ID: 1, Name: users1] Task ID: 2 berhasil diperbarui menjadi status: 2
+[2025-04-15 13:27:23] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:27:23] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 13:28:26] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 5 menjadi: 1
+[2025-04-15 13:28:26] [User ID: 1, Name: users1] Task ID: 5 berhasil diperbarui menjadi status: 1
+[2025-04-15 13:29:54] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 13:29:54] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 13:31:57] [User ID: Unknown, Name: Unknown] Login gagal untuk email user@gmail.com (password salah).
+[2025-04-15 13:32:03] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 13:37:10] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 13:37:10] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 13:37:38] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 13:40:33] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 13:40:33] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 13:40:56] [User ID: Unknown, Name: Unknown] Login gagal untuk email john.doe@example.com (password salah).
+[2025-04-15 13:41:05] [User ID: 4, Name: John Doe] User John Doe login berhasil.
+[2025-04-15 13:44:36] [User ID: 4, Name: John Doe] Project 'cek' (ID: 87) ditambahkan oleh User ID: 4
+[2025-04-15 13:53:14] [User ID: 4, Name: John Doe] User John Doe (ID: 4) melakukan logout.
+[2025-04-15 13:53:14] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 13:56:36] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 13:56:59] [User ID: 1, Name: users1] Project 'mengerjakan matematika' (ID: 88) ditambahkan oleh User ID: 1
+[2025-04-15 13:57:24] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:25] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:26] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:28] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:29] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:29] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 13:57:30] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'lingkaran' ke project ID: 88 dengan due date: 2025-04-22
+[2025-04-15 14:01:14] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'test' ke project ID: 88 dengan due date: 2027-03-12
+[2025-04-15 14:01:16] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'test' ke project ID: 88 dengan due date: 2027-03-12
+[2025-04-15 14:01:18] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'test' ke project ID: 88 dengan due date: 2027-03-12
+[2025-04-15 14:01:29] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'test' ke project ID: 88 dengan due date: 2027-03-12
+[2025-04-15 14:04:08] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'test' ke project ID: 88 dengan due date: 2027-03-12
+[2025-04-15 14:04:38] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:05:50] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:06:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:06:43] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:07:56] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:07:56] [User ID: 1, Name: users1] Task 'testing' berhasil ditambahkan dengan ID: 86
+[2025-04-15 14:08:27] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing2' ke project ID: 88 dengan due date: 2027-02-21
+[2025-04-15 14:08:27] [User ID: 1, Name: users1] Task 'testing2' berhasil ditambahkan dengan ID: 87
+[2025-04-15 14:10:45] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:10:45] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:10:47] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:10:47] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:10:55] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:10:57] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:11:06] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:11:07] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:11:23] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:11:33] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-05-02
+[2025-04-15 14:11:33] [User ID: 1, Name: users1] Task 'testing' berhasil ditambahkan dengan ID: 88
+[2025-04-15 14:12:18] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2025-04-24
+[2025-04-15 14:13:34] [User ID: 1, Name: users1] User ID: 1 mencoba menambahkan task: 'testing' ke project ID: 88 dengan due date: 2026-02-21
+[2025-04-15 14:13:34] [User ID: 1, Name: users1] Task 'testing' berhasil ditambahkan dengan ID: 89
+[2025-04-15 14:13:42] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 88 menjadi: 1
+[2025-04-15 14:13:42] [User ID: 1, Name: users1] Task ID: 88 berhasil diperbarui menjadi status: 1
+[2025-04-15 14:13:44] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:13:44] [User ID: 1, Name: users1] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-15 14:15:10] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 14:15:10] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 14:15:14] [User ID: 4, Name: John Doe] User John Doe login berhasil.
+[2025-04-15 14:25:34] [User ID: 4, Name: John Doe] User John Doe (ID: 4) melakukan logout.
+[2025-04-15 14:25:34] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 14:25:41] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 14:26:11] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 14:26:11] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 14:26:16] [User ID: 4, Name: John Doe] User John Doe login berhasil.
+[2025-04-15 14:30:01] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test id 4' ke project ID: 87 dengan due date: 2025-04-24
+[2025-04-15 14:30:01] [User ID: 4, Name: John Doe] Task 'test id 4' berhasil ditambahkan dengan ID: 90
+[2025-04-15 14:34:57] [User ID: 4, Name: John Doe] User John Doe (ID: 4) mencoba mengakses login, tetapi sudah login.
+[2025-04-15 14:35:12] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'sdas' ke project ID: 87 dengan due date: 2026-03-23
+[2025-04-15 14:35:12] [User ID: 4, Name: John Doe] Task 'sdas' berhasil ditambahkan dengan ID: 91
+[2025-04-15 14:35:17] [User ID: 4, Name: John Doe] User John Doe (ID: 4) melakukan logout.
+[2025-04-15 14:35:17] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 14:35:20] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 14:35:30] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-15 14:35:30] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-15 14:38:16] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-15 14:38:23] [User ID: 1, Name: users1] Project 'Project Beta 1' (ID: 81) dihapus oleh User ID: 1
+[2025-04-15 14:38:26] [User ID: 1, Name: users1] Project 'Project  SpaceX' (ID: 86) dihapus oleh User ID: 1
+[2025-04-16 07:22:24] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-16 07:32:12] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-16 07:36:26] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-17 07:04:27] [User ID: 1, Name: users1] Auto-login berhasil dari cookie untuk user: users1
+[2025-04-17 07:29:10] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-17 07:29:10] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 07:31:18] [User ID: 4, Name: John Doe] User John Doe login berhasil.
+[2025-04-17 07:31:29] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 90 menjadi: 1
+[2025-04-17 07:31:30] [User ID: 4, Name: John Doe] Task ID: 90 berhasil diperbarui menjadi status: 1
+[2025-04-17 07:31:35] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 91 menjadi: 1
+[2025-04-17 07:31:35] [User ID: 4, Name: John Doe] Task ID: 91 berhasil diperbarui menjadi status: 1
+[2025-04-17 07:31:40] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 91 menjadi: 2
+[2025-04-17 07:31:40] [User ID: 4, Name: John Doe] Task ID: 91 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:00:39] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 90 menjadi: 2
+[2025-04-17 08:00:39] [User ID: 4, Name: John Doe] Task ID: 90 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:07:54] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'Cek Task' ke project ID: 87 dengan due date: 2025-05-01
+[2025-04-17 08:07:54] [User ID: 4, Name: John Doe] Task 'Cek Task' berhasil ditambahkan dengan ID: 92
+[2025-04-17 08:07:58] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 92 menjadi: 2
+[2025-04-17 08:07:58] [User ID: 4, Name: John Doe] Task ID: 92 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:08:35] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test completed' ke project ID: 87 dengan due date: 2025-05-06
+[2025-04-17 08:08:35] [User ID: 4, Name: John Doe] Task 'test completed' berhasil ditambahkan dengan ID: 93
+[2025-04-17 08:09:06] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 93 menjadi: 2
+[2025-04-17 08:09:06] [User ID: 4, Name: John Doe] Task ID: 93 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:09:15] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test' ke project ID: 87 dengan due date: 2025-05-01
+[2025-04-17 08:09:15] [User ID: 4, Name: John Doe] Task 'test' berhasil ditambahkan dengan ID: 94
+[2025-04-17 08:12:49] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 94 menjadi: 1
+[2025-04-17 08:12:49] [User ID: 4, Name: John Doe] Task ID: 94 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:12:58] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 94 menjadi: 1
+[2025-04-17 08:12:58] [User ID: 4, Name: John Doe] Task ID: 94 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:16:31] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 94 menjadi: 2
+[2025-04-17 08:16:31] [User ID: 4, Name: John Doe] Task ID: 94 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:17:43] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'task in progres' ke project ID: 87 dengan due date: 2025-04-29
+[2025-04-17 08:17:43] [User ID: 4, Name: John Doe] Task 'task in progres' berhasil ditambahkan dengan ID: 95
+[2025-04-17 08:17:47] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 95 menjadi: 1
+[2025-04-17 08:17:47] [User ID: 4, Name: John Doe] Task ID: 95 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:20:02] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 95 menjadi: 2
+[2025-04-17 08:20:02] [User ID: 4, Name: John Doe] Task ID: 95 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:20:17] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test mark in progress' ke project ID: 87 dengan due date: 2025-04-29
+[2025-04-17 08:20:17] [User ID: 4, Name: John Doe] Task 'test mark in progress' berhasil ditambahkan dengan ID: 96
+[2025-04-17 08:20:22] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 96 menjadi: 1
+[2025-04-17 08:20:22] [User ID: 4, Name: John Doe] Task ID: 96 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:22:17] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test in progress lagi' ke project ID: 87 dengan due date: 2025-05-08
+[2025-04-17 08:22:17] [User ID: 4, Name: John Doe] Task 'test in progress lagi' berhasil ditambahkan dengan ID: 97
+[2025-04-17 08:22:22] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 97 menjadi: 1
+[2025-04-17 08:22:22] [User ID: 4, Name: John Doe] Task ID: 97 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:26:12] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'cek mark in progres' ke project ID: 87 dengan due date: 2025-05-02
+[2025-04-17 08:26:12] [User ID: 4, Name: John Doe] Task 'cek mark in progres' berhasil ditambahkan dengan ID: 98
+[2025-04-17 08:26:16] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 98 menjadi: 1
+[2025-04-17 08:26:16] [User ID: 4, Name: John Doe] Task ID: 98 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:26:21] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:21] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:23] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:23] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:25] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:25] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:28] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:28] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:30] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:30] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:32] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:32] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:34] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:34] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:36] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:36] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:38] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:26:38] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:29:48] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'testing swal' ke project ID: 87 dengan due date: 2025-05-07
+[2025-04-17 08:29:48] [User ID: 4, Name: John Doe] Task 'testing swal' berhasil ditambahkan dengan ID: 99
+[2025-04-17 08:29:55] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 99 menjadi: 1
+[2025-04-17 08:29:55] [User ID: 4, Name: John Doe] Task ID: 99 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:35:06] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 99 menjadi: 2
+[2025-04-17 08:35:06] [User ID: 4, Name: John Doe] Task ID: 99 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:43:37] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:43:37] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:44:44] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'test' ke project ID: 87 dengan due date: 2025-05-07
+[2025-04-17 08:44:44] [User ID: 4, Name: John Doe] Task 'test' berhasil ditambahkan dengan ID: 100
+[2025-04-17 08:44:48] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 100 menjadi: 1
+[2025-04-17 08:44:48] [User ID: 4, Name: John Doe] Task ID: 100 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:44:51] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:44:51] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:46:47] [User ID: 4, Name: John Doe] User ID: 4 mencoba menambahkan task: 'testing' ke project ID: 87 dengan due date: 2025-05-10
+[2025-04-17 08:46:47] [User ID: 4, Name: John Doe] Task 'testing' berhasil ditambahkan dengan ID: 101
+[2025-04-17 08:46:51] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 101 menjadi: 1
+[2025-04-17 08:46:51] [User ID: 4, Name: John Doe] Task ID: 101 berhasil diperbarui menjadi status: 1
+[2025-04-17 08:47:50] [User ID: 4, Name: John Doe] User ID: 4 mencoba mengubah status task ID: 101 menjadi: 2
+[2025-04-17 08:47:50] [User ID: 4, Name: John Doe] Task ID: 101 berhasil diperbarui menjadi status: 2
+[2025-04-17 08:47:53] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:47:53] [User ID: 4, Name: John Doe] Task '' (ID: 0) dihapus oleh User ID: 
+[2025-04-17 08:49:13] [User ID: 4, Name: John Doe] Project 'cek' (ID: 87) dihapus oleh User ID: 4
+[2025-04-17 08:49:28] [User ID: 4, Name: John Doe] User John Doe (ID: 4) melakukan logout.
+[2025-04-17 08:49:28] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 08:49:52] [User ID: 7, Name: Rizal] User baru berhasil register: Rizal (rizal@gmail.com)
+[2025-04-17 08:49:57] [User ID: 7, Name: Rizal] User Rizal (ID: 7) melakukan logout.
+[2025-04-17 08:49:57] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 08:50:07] [User ID: 7, Name: Rizal] User Rizal login berhasil.
+[2025-04-17 08:52:13] [User ID: 7, Name: Rizal] User Rizal (ID: 7) melakukan logout.
+[2025-04-17 08:52:13] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 09:02:12] [User ID: 7, Name: Rizal] User Rizal login berhasil.
+[2025-04-17 09:03:00] [User ID: 7, Name: Rizal] User Rizal (ID: 7) melakukan logout.
+[2025-04-17 09:03:00] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 09:05:16] [User ID: 1, Name: users1] User users1 login berhasil.
+[2025-04-17 09:05:22] [User ID: 1, Name: users1] Project 'mengerjakan matematika 1' (ID: 88) diperbarui oleh User ID: 1
+[2025-04-17 09:05:36] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 89 menjadi: 1
+[2025-04-17 09:05:36] [User ID: 1, Name: users1] Task ID: 89 berhasil diperbarui menjadi status: 1
+[2025-04-17 09:05:42] [User ID: 1, Name: users1] User ID: 1 mencoba mengubah status task ID: 89 menjadi: 2
+[2025-04-17 09:05:42] [User ID: 1, Name: users1] Task ID: 89 berhasil diperbarui menjadi status: 2
+[2025-04-17 09:14:51] [User ID: 1, Name: users1] User users1 (ID: 1) melakukan logout.
+[2025-04-17 09:14:51] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 09:15:34] [User ID: 1, Name: Bagas Wahyu ] User Bagas Wahyu  login berhasil.
+[2025-04-17 09:16:15] [User ID: 1, Name: Bagas Wahyu ] Project 'mengerjakan matematika' (ID: 88) diperbarui oleh User ID: 1
+[2025-04-17 09:17:14] [User ID: 1, Name: Bagas Wahyu ] User Bagas Wahyu  (ID: 1) melakukan logout.
+[2025-04-17 09:17:14] [User ID: Unknown, Name: Unknown] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 09:18:04] [User ID: 1, Name: Bagas Wahyu ] User Bagas Wahyu  login berhasil.
+[2025-04-17 09:18:11] [User ID: 1, Name: Bagas Wahyu ] User Bagas Wahyu  (ID: 1) melakukan logout.
+[2025-04-17 09:18:11] [User ID: 1, Name: Bagas Wahyu ] Cookie 'remember_user' dihapus setelah logout.
+[2025-04-17 09:35:14] [User ID: Unknown, Name: Unknown] Login gagal untuk email rizalrizal@gmail.com (tidak terdaftar).
+[2025-04-17 09:35:42] [User ID: Unknown, Name: Unknown] Login gagal untuk email rizal@gmail.com (password salah).
+[2025-04-17 09:49:27] [User ID: Unknown, Name: Unknown] Login gagal untuk email rizal@gmail.com (password salah).
+[2025-04-17 09:49:39] [User ID: 7, Name: Rizal] User Rizal login berhasil.
+[2025-04-17 10:03:46] [User ID: 7, Name: Rizal] Project 'Informatika' (ID: 89) ditambahkan oleh User ID: 7
