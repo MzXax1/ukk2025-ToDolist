@@ -48,7 +48,7 @@ Aplikasi To-Do List ini memungkinkan pengguna untuk menambahkan, menampilkan, me
 6. **Logout**: Klik tombol logout untuk keluar dari aplikasi.
 
 ## Kontributor
-- Developer: 
+- Developer: Mzx1x
 
 ## Lisensi
 Proyek ini berlisensi MIT. Anda bebas menggunakannya dengan tetap memberikan kredit kepada pembuat asli.
