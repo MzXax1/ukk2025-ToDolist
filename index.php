@@ -826,7 +826,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
                                         <?php endif; ?>
                                         
                                         <!-- Tombol Delete selalu muncul -->
-                                        <button onclick="confirmDelete(<?= (int) $task['id']; ?>, '<?= htmlspecialchars(addslashes($task['name'])); ?>')">Delete</button>
+                                        <button onclick="confirmDeleteTask(<?= (int) $task['id']; ?>, '<?= htmlspecialchars(addslashes($task['name'])); ?>')">Delete</button>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -966,7 +966,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
                 }
             });
         }
-        function deleteProject(projectId) {
+        function confirmDeleteProject(projectId) {
             if (confirm("Are you sure you want to delete this project?")) {
                 window.location.href = `delete_project.php?project_id=${projectId}`;
             }
@@ -1271,7 +1271,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
         }
         
 
-        function confirmDelete(taskId, taskName) {
+        function confirmDeleteTask(taskId, taskName) {
             Swal.fire({
                 title: 'Hapus Task?',
                 text: `Yakin ingin menghapus task "${taskName}"?`,
