@@ -28,7 +28,7 @@ $stmt = $conn->prepare("SELECT name FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc(); 
+$user = $result->fetch_assoc();
 
 // Initialize variables
 $user_id = $_SESSION['user_id'];
@@ -71,33 +71,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_project_id']) &&
     exit;
 }
 
+
 // Handle adding a task
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task_name']) && isset($_POST['project_id'])) {
     $task_name = cleanInput($_POST['task_name']);
-    $status = $_POST['status']; // Assuming status is 'Pending' or 'In Progress'
-    $priority = $_POST['priority']; // Ensure priority is passed as Low, Medium, High
+    $status = isset($_POST['status']) ? (int)$_POST['status'] : 0; // 0=Pending, 1=In Progress
+    $priority = cleanInput($_POST['priority']); // Ensure priority is passed as Low, Medium, High
     $project_id = (int) $_POST['project_id'];
-    $due_date = isset($_POST['due_date']) ? $_POST['due_date'] : NULL;
+    $due_date = isset($_POST['due_date']) && !empty($_POST['due_date']) ? $_POST['due_date'] : NULL;
 
+    // Log the attempt
     writeLog("User ID: {$_SESSION['user_id']} mencoba menambahkan task: '$task_name' ke project ID: $project_id dengan due date: $due_date");
 
-    // Validate due date, if it's in the past
-    if ($due_date && strtotime($due_date) < time()) {
-        writeLog("Task '$task_name' berhasil ditambahkan dengan ID: {$conn->insert_id}");
+    // Verify the project belongs to the user
+    $verify_stmt = $conn->prepare("SELECT id FROM projects WHERE id = ? AND user_id = ?");
+    $verify_stmt->bind_param("ii", $project_id, $_SESSION['user_id']);
+    $verify_stmt->execute();
+    $verify_result = $verify_stmt->get_result();
+
+    if ($verify_result->num_rows === 0) {
+        // Project doesn't belong to user or doesn't exist
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Invalid project']);
+        exit;
+    }
+
+    // Validate due date if it exists
+    if ($due_date && strtotime($due_date) < strtotime(date('Y-m-d'))) {
+        header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Due date cannot be in the past.']);
         exit;
     }
 
-    // Insert into database (assume status is either 0 or 1 for pending/in progress)
-    $user_id = $_SESSION['user_id'];
-    $stmt = $conn->prepare("INSERT INTO tasks (name, is_completed, project_id, due_date, user_id, priority) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("siisis", $task_name, $status, $project_id, $due_date, $user_id, $priority);
+    // Insert into database
+    $stmt = $conn->prepare("INSERT INTO tasks (name, is_completed, project_id, due_date, priority) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("siiss", $task_name, $status, $project_id, $due_date, $priority);
 
     if ($stmt->execute()) {
-        writeLog("Task '$task_name' berhasil ditambahkan dengan ID: {$conn->insert_id}");
-        echo json_encode(['success' => true, 'task_id' => $conn->insert_id, 'task_name' => $task_name, 'status' => $status, 'priority' => $priority]);
+        $task_id = $conn->insert_id;
+        writeLog("Task '$task_name' berhasil ditambahkan dengan ID: $task_id");
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'task_id' => $task_id,
+            'task_name' => $task_name,
+            'status' => $status,
+            'priority' => $priority
+        ]);
     } else {
         writeLog("Gagal menambahkan task: " . $stmt->error);
+
+        header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Failed to add task: ' . $stmt->error]);
     }
     exit;
@@ -251,10 +276,13 @@ $nama_user = $user ? $user['name'] : 'Guest';
     <title>ToDo App - Tasks for
         <?= htmlspecialchars($projectName); ?>
     </title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="vaficon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             min-height: 100vh;
             margin: 0;
@@ -278,7 +306,8 @@ $nama_user = $user ? $user['name'] : 'Guest';
             display: flex;
             flex-direction: column;
             padding: 20px;
-            overflow: hidden; /* Jangan scroll seluruh .content */
+            overflow: hidden;
+            /* Jangan scroll seluruh .content */
         }
 
         .task-list {
@@ -287,9 +316,23 @@ $nama_user = $user ? $user['name'] : 'Guest';
             margin-top: 20px;
         }
 
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.3rem;
+            transition: color 0.2s;
+        }
+
+        .icon-btn:hover {
+            color: red;
+        }
+
         .task-actions-wrapper {
             display: flex;
-            justify-content: flex-start; /* atau center kalau mau tengah */
+            justify-content: flex-start;
+            /* atau center kalau mau tengah */
             margin-top: 15px;
         }
 
@@ -311,26 +354,161 @@ $nama_user = $user ? $user['name'] : 'Guest';
             background-color: #f4f4f4;
             padding: 20px;
         }
-       
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            max-width: 300px;
+        }
+
+        .custom-file-label {
+            background-color: #f5f5f5;
+            border: 2px dashed #ccc;
+            padding: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            position: relative;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .custom-file-label:hover {
+            background-color: #eaeaea;
+        }
+
+        .custom-file-label input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .upload-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .upload-btn:hover {
+            background-color: #45a049;
+        }
+
         /* Modal Styling */
         .modal {
             display: none;
             /* Hidden by default */
             position: fixed;
-            /* Stay in place */
             z-index: 1000;
-            /* Sit on top */
             left: 0;
             top: 0;
             width: 100%;
-            /* Full width */
             height: 100%;
-            /* Full height */
-            background-color: rgba(0, 0, 0, 0.6);
-            /* Black with opacity */
-            backdrop-filter: blur(4px);
-            /* Blur effect */
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px 25px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
 
         .priority-filter-form {
             margin-bottom: 20px;
@@ -373,20 +551,21 @@ $nama_user = $user ? $user['name'] : 'Guest';
             /* Rounded corners */
         }
 
-        .modal-body input,
+        .modal-body input[type="text"],
         .modal-body select {
             width: 100%;
-            /* Full width */
+            max-width: 300px;
+            /* Batas maksimum panjang input */
             padding: 10px;
-            /* Padding inside input */
-            margin-bottom: 15px;
-            /* Space below input */
-            border-radius: 6px;
-            /* Rounded corners */
             border: 1px solid #ccc;
-            /* Light border */
+            border-radius: 8px;
             font-size: 14px;
-            /* Font size */
+            box-sizing: border-box;
+        }
+
+        #task-due-date {
+            max-width: 200px;
+            /* Lebih kecil dari input nama */
         }
 
         .submit-btn {
@@ -443,8 +622,8 @@ $nama_user = $user ? $user['name'] : 'Guest';
             background-color: #c82333;
             /* Darker red on hover */
         }
-        
-       
+
+
 
         .completed-task {
             text-decoration: line-through;
@@ -480,8 +659,10 @@ $nama_user = $user ? $user['name'] : 'Guest';
         .task-priority {
             font-size: 13px;
             font-weight: 500;
-            margin-right: 4px;   /* kasih jarak ke status */
-            margin-left: -8px;   /* ini geser ke kiri */
+            margin-right: 4px;
+            /* kasih jarak ke status */
+            margin-left: -8px;
+            /* ini geser ke kiri */
         }
 
         .task-item .task-name {
@@ -496,7 +677,8 @@ $nama_user = $user ? $user['name'] : 'Guest';
             padding: 5px 10px;
             border-radius: 6px;
             color: white;
-            margin-top: 4px; /* Tambahkan ini */
+            margin-top: 4px;
+            /* Tambahkan ini */
         }
 
         .task-item .task-status.pending {
@@ -680,6 +862,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
             border-radius: 4px;
             cursor: pointer;
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -705,9 +888,9 @@ $nama_user = $user ? $user['name'] : 'Guest';
                         class="search-input"
                         value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                         style="padding-right: 30px; width: 100%; box-sizing: border-box;">
-                    
+
                     <?php if (!empty($_GET['search'])): ?>
-                        <span class="reset-search" title="Reset search" onclick="resetSearch()" 
+                        <span class="reset-search" title="Reset search" onclick="resetSearch()"
                             style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: red; font-weight: bold;">
                             ✕
                         </span>
@@ -736,13 +919,14 @@ $nama_user = $user ? $user['name'] : 'Guest';
                                 <div class="dropdown-menu" id="dropdown-<?= $project['id']; ?>" style="display: none;">
                                     <button
                                         onclick="openEditProjectModal(<?= $project['id']; ?>, '<?= htmlspecialchars($project['name']); ?>')">Edit</button>
-                                    <button onclick="confirmDeleteProject(<?= $project['id']; ?>)">Delete</button>
+                                    <button onclick="confirmDeleteProject(<?= (int) $project['id']; ?>, '<?= htmlspecialchars(addslashes($project['name'])); ?>')">Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </li>
                 <?php } ?>
-            </ul>   
+            </ul>
             <button class="add-project-btn" onclick="openProjectModal()">+ Add Project</button>
             <!-- Logout Button -->
             <?php if (isset($_SESSION['user_id'])) { ?>
@@ -767,100 +951,139 @@ $nama_user = $user ? $user['name'] : 'Guest';
                 <input type="hidden" name="project_id" value="<?= (int) $project_id ?>">
             </form>
             <div class="task-actions-wrapper">
-            <?php if ($project_id !== 0) { ?>
-                <button class="add-task-btn" onclick="openTaskModal()">+ Add Task</button>
-            <?php } ?>
+                <?php if ($project_id !== 0) { ?>
+                    <button class="add-task-btn" onclick="openTaskModal()">+ Add Task</button>
+                <?php } ?>
             </div>
             <div class="task-list">
-                    <?php if ($resultTasks && $resultTasks->num_rows > 0) { ?>
-                        <?php while ($task = $resultTasks->fetch_assoc()) {
-                            // Map status code to string and class
-                            $status = '';
-                            $statusClass = '';
-                            switch ($task['is_completed']) {
-                                case 0:
-                                    $status = 'Pending';
-                                    $statusClass = 'pending';
-                                    break;
-                                case 1:
-                                    $status = 'In Progress';
-                                    $statusClass = 'in-progress';
-                                    break;
-                                case 2:
-                                    $status = 'Completed';
-                                    $statusClass = 'completed';
-                                    break;
-                            }
-                            ?>
-                            <div class="task-item">
-                                <div class="task-header">
-                                    <div class="task-name <?= $task['is_completed'] == 2 ? 'completed-task' : ''; ?>">
-                                        <a href="index.php?project_id=<?= $task['project_id']; ?>" style="text-decoration: none; color: inherit;">
-                                            <?= htmlspecialchars($task['name']); ?>
-                                        </a>
-                                    </div>
-                                    <div class="task-status <?= $statusClass; ?>">
-                                        <?= htmlspecialchars($status); ?>
-                                    </div>
+                <?php if ($resultTasks && $resultTasks->num_rows > 0) { ?>
+                    <?php while ($task = $resultTasks->fetch_assoc()) {
+                        // Map status code to string and class
+                        $status = '';
+                        $statusClass = '';
+                        switch ($task['is_completed']) {
+                            case 0:
+                                $status = 'Pending';
+                                $statusClass = 'pending';
+                                break;
+                            case 1:
+                                $status = 'In Progress';
+                                $statusClass = 'in-progress';
+                                break;
+                            case 2:
+                                $status = 'Completed';
+                                $statusClass = 'completed';
+                                break;
+                        }
+                    ?>
+                        <div class="task-item">
+                            <div class="task-header">
+                                <div class="task-name <?= $task['is_completed'] == 2 ? 'completed-task' : ''; ?>">
+                                    <a href="index.php?project_id=<?= $task['project_id']; ?>" style="text-decoration: none; color: inherit;">
+                                        <?= htmlspecialchars($task['name']); ?>
+                                    </a>
                                 </div>
-
-                                <div class="task-meta">
-                                    <span class="task-priority">Priority: <?= htmlspecialchars($task['priority']); ?></span>
-                                    <span class="task-due-date">
-                                        <?= $task['is_completed'] == 2 ? 'Completed On:' : 'Due Date:' ?>
-                                        <?= htmlspecialchars(
-                                            $task['is_completed'] == 2
-                                            ? ($task['completed_at'] ? date('Y-m-d', strtotime($task['completed_at'])) : 'Unknown')
-                                            : ($task['due_date'] ? date('Y-m-d', strtotime($task['due_date'])) : 'Not Set')
-                                        ); ?>
-                                    </span>
-                                </div>
-                                <div class="task-actions">
-                                    <?php if ($project_id !== 0): ?>
-                                        <?php if ($task['is_completed'] == 0): ?>
-                                            <!-- Task masih pending -->
-                                            <button onclick="markTaskAsInProgress(<?= $task['id']; ?>)">Mark In Progress</button>
-                                        <?php elseif ($task['is_completed'] == 1): ?>
-                                            <!-- Task sedang dikerjakan -->
-                                            <button onclick="markTaskAsCompleted(<?= $task['id']; ?>)">Mark as Completed</button>
-                                        <?php endif; ?>
-                                        
-                                        <!-- Tombol Delete selalu muncul -->
-                                        <button onclick="confirmDeleteTask(<?= (int) $task['id']; ?>, '<?= htmlspecialchars(addslashes($task['name'])); ?>')">Delete</button>
-                                    <?php endif; ?>
+                                <div class="task-status <?= $statusClass; ?>">
+                                    <?= htmlspecialchars($status); ?>
                                 </div>
                             </div>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <p>No tasks available</p>
+
+                            <div class="task-meta">
+                                <span class="task-priority">Priority: <?= htmlspecialchars($task['priority']); ?></span>
+                                <span class="task-due-date">
+                                    <?= $task['is_completed'] == 2 ? 'Completed On:' : 'Due Date:' ?>
+                                    <?= htmlspecialchars(
+                                        $task['is_completed'] == 2
+                                            ? ($task['completed_at'] ? date('Y-m-d', strtotime($task['completed_at'])) : 'Unknown')
+                                            : ($task['due_date'] ? date('Y-m-d', strtotime($task['due_date'])) : 'Not Set')
+                                    ); ?>
+                                </span>
+                            </div>
+
+                            <div class="task-actions">
+                                <?php if ($project_id !== 0): ?>
+                                    <?php if ($task['is_completed'] == 0): ?>
+                                        <!-- Task masih pending -->
+                                        <button onclick="markTaskAsInProgress(<?= $task['id']; ?>)">Mark In Progress</button>
+
+                                    <?php elseif ($task['is_completed'] == 1): ?>
+                                        <!-- Task sedang dikerjakan -->
+                                        <?php if (empty($task['proof_file'])): ?>
+                                            <!-- Form upload sekaligus menyelesaikan -->
+                                            <form action="upload_and_complete.php" method="post" enctype="multipart/form-data" class="upload-form">
+                                                <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+
+                                                <label for="proof_file_<?= $task['id']; ?>" class="custom-file-label">
+                                                    Pilih File Bukti
+                                                    <input type="file" name="proof_file" id="proof_file_<?= $task['id']; ?>" required>
+                                                </label>
+
+                                                <button type="submit" class="upload-btn">Upload Bukti & Selesaikan</button>
+                                            </form>
+                                        <?php else: ?>
+                                            <!-- Bukti sudah ada -->
+                                            <p>Bukti telah diupload:
+                                                <a href="#" onclick="showProofImage('uploads/<?= htmlspecialchars($task['proof_file']); ?>')">
+                                                    <i class="fas fa-image" style="font-size: 24px; color: #007bff;"></i> Lihat Bukti
+                                                </a>
+                                            </p>
+                                        <?php endif; ?>
+
+                                    <?php elseif ($task['is_completed'] == 2): ?>
+                                        <p>
+                                            <a href="#" onclick="showProofImage('uploads/<?= htmlspecialchars($task['proof_file']); ?>')">
+                                                <i class="fas fa-image" style="font-size: 24px; color: #007bff;"></i>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+
+                                    <!-- Tombol Delete selalu muncul -->
+                                    <button onclick="deleteTask(<?= (int) $task['id']; ?>, '<?= htmlspecialchars(addslashes($task['name'])); ?>')">
+                                        <i class="fas fa-trash"></i> Hapus
+                                    </button>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     <?php } ?>
-                </div>
+                <?php } else { ?>
+                    <p>No tasks available</p>
+                <?php } ?>
+            </div>
             <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 1): ?>
                 <script>
-                Swal.fire({
-                    title: 'Terhapus!',
-                    text: 'Task berhasil dihapus.',
-                    icon: 'success',
-                    timer: 2000,
-                    showConfirmButton: false
-                });
+                    Swal.fire({
+                        title: 'Terhapus!',
+                        text: 'Task berhasil dihapus.',
+                        icon: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
                 </script>
-                <?php endif; ?>
+            <?php endif; ?>
         </main>
     </div>
     <!-- Edit Project Modal -->
     <div id="editProjectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeEditProjectModal()">&times;</span>
-            <h2>Edit Project</h2>
-            <form id="editProjectForm" method="POST" action="edit_project.php">
+        <div class="modal-content" style="max-width: 400px; padding: 20px; border-radius: 12px; background-color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0; font-size: 20px;">Edit Project</h2>
+                <span class="close" onclick="closeEditProjectModal()" style="font-size: 24px; cursor: pointer;">&times;</span>
+            </div>
+
+            <form id="editProjectForm" method="POST" action="edit_project.php" style="margin-top: 20px;">
                 <input type="hidden" name="project_id" id="editProjectId">
-                <label for="projectName">Project Name:</label>
-                <input type="text" name="project_name" id="editProjectName" required>
-                <button type="submit" class="btn">Save Changes</button>
+
+                <label for="editProjectName" style="display: block; margin-bottom: 6px; font-weight: bold;">Project Name</label>
+                <input type="text" name="project_name" id="editProjectName" required
+                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+
+                <button type="submit" class="btn" style="margin-top: 16px; width: 100%; padding: 10px 0; background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
+                    Save Changes
+                </button>
             </form>
         </div>
     </div>
+
     <!-- Modal for Adding Project -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
@@ -881,27 +1104,40 @@ $nama_user = $user ? $user['name'] : 'Guest';
     <div class="modal" id="task-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Add New Task</h2>
-                <button class="close-btn" onclick="closeTaskModal()">X</button>
+                <h2>Tambah Tugas Baru</h2>
+                <button class="close-btn" onclick="closeTaskModal()">×</button>
             </div>
             <div class="modal-body">
-                <input type="text" id="task-name" placeholder="Task Name" required>
-                <select id="task-status" required>
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                </select>
-                <select id="task-priority" required>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <input type="date" id="task-due-date" required>
-                <div class="modal-footer">
-                    <button class="submit-btn" onclick="addTask()">Save Task</button>
+                <div class="form-group">
+                    <label for="task-name">Nama Tugas</label>
+                    <input type="text" id="task-name" placeholder="Contoh: Desain UI Login" required>
                 </div>
+                <div class="form-group">
+                    <label for="task-status">Status</label>
+                    <select id="task-status" required>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority">Prioritas</label>
+                    <select id="task-priority" required>
+                        <option value="Low">Rendah</option>
+                        <option value="Medium">Sedang</option>
+                        <option value="High">Tinggi</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-due-date">Tanggal Tenggat</label>
+                    <input type="text" id="task-due-date" placeholder="Pilih tanggal" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="submit-btn" onclick="addTask()">Simpan</button>
             </div>
         </div>
     </div>
+
     <!-- Modal for Editing Product -->
     <div id="edit-product-modal" class="modal">
         <div class="edit-product-modal-content">
@@ -929,7 +1165,31 @@ $nama_user = $user ? $user['name'] : 'Guest';
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#task-due-date", {
+                locale: "id", // Menggunakan locale Indonesia
+                dateFormat: "d-m-Y", // Format tanggal dd-mm-yyyy
+                minDate: "today", // Mengatur agar tanggal minimal adalah hari ini
+                maxDate: "31-12-2099", // Bisa diatur sesuai kebutuhan
+                allowInput: true, // Agar pengguna bisa mengetikkan tanggal secara manual
+            });
+        });
+
+        function showProofImage(imageUrl) {
+            Swal.fire({
+                title: 'Bukti Task',
+                html: `<img src="${imageUrl}" alt="Bukti" style="width: 100%; max-width: 600px; height: auto;">`,
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText: 'Tutup',
+                confirmButtonColor: '#3085d6',
+            });
+        }
+
         function openEditProductModal(productId, productName, productPrice, productDescription) {
             document.getElementById('edit-product_name').value = productName;
             document.getElementById('edit-product_price').value = productPrice;
@@ -966,7 +1226,8 @@ $nama_user = $user ? $user['name'] : 'Guest';
                 }
             });
         }
-        function confirmDeleteProject(projectId) {
+
+        function deleteProject(projectId) {
             if (confirm("Are you sure you want to delete this project?")) {
                 window.location.href = `delete_project.php?project_id=${projectId}`;
             }
@@ -1008,7 +1269,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
         function deleteTask(taskId) {
             if (confirm('Are you sure you want to delete this task?')) {
                 // Make a POST request to delete the task
-                window.location.href = '../function/delete_task.php?task_id=' + taskId;
+                window.location.href = 'delete_task.php?task_id=' + taskId;
             }
         }
 
@@ -1016,10 +1277,10 @@ $nama_user = $user ? $user['name'] : 'Guest';
             const taskName = document.getElementById('task-name').value;
             const taskStatus = document.getElementById('task-status').value;
             const taskPriority = document.getElementById('task-priority').value;
-            const taskDueDate = document.getElementById('task-due-date').value;
-            const projectId = <?= $project_id ?>;  // Ensure this is dynamically passed from PHP
+            const taskDueDateRaw = document.getElementById('task-due-date').value;
+            const projectId = <?= $project_id ?>;
 
-            // Validation to ensure task name is not empty
+            // Validation
             if (taskName.trim() === '') {
                 Swal.fire({
                     icon: 'error',
@@ -1029,30 +1290,43 @@ $nama_user = $user ? $user['name'] : 'Guest';
                 return;
             }
 
-            // AJAX call to send the task data to the server
+            // Format tanggal dari DD-MM-YYYY ke YYYY-MM-DD
+            const dateParts = taskDueDateRaw.split("-");
+            const taskDueDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+
+            // AJAX call
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'index.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'Task added successfully!',
-                        }).then(() => {
-                            location.reload();  // Reload to update task list
-                        });
-                    } else {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: 'Task added successfully!',
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Error adding task: ' + (response.message || 'Something went wrong!'),
+                            });
+                        }
+                    } catch (e) {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Error',
-                            text: 'Error adding task: ' + (response.message || 'Something went wrong!'),
+                            title: 'Server Error',
+                            text: 'Invalid JSON response: \n\n' + xhr.responseText,
                         });
                     }
                 }
             };
+
             xhr.send(`task_name=${taskName}&status=${taskStatus}&priority=${taskPriority}&due_date=${taskDueDate}&project_id=${projectId}`);
         }
 
@@ -1093,7 +1367,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
                                 showConfirmButton: false,
                                 timer: 1500
                             }).then(() => {
-                                location.reload();  // Reload to update task list
+                                location.reload(); // Reload to update task list
                             });
                         } else {
                             Swal.fire({
@@ -1160,7 +1434,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
         }
 
         // Optional: Close dropdown when clicking outside
-        document.addEventListener("click", function (event) {
+        document.addEventListener("click", function(event) {
             const dropdowns = document.querySelectorAll(".dropdown-menu");
             dropdowns.forEach((dropdown) => {
                 if (!dropdown.contains(event.target) && !event.target.classList.contains("menu-toggle")) {
@@ -1186,6 +1460,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
             var dropdown = document.getElementById('dropdown-' + projectId);
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
+
         function openEditProjectModal(projectId, projectName) {
             document.getElementById('editProjectId').value = projectId;
             document.getElementById('editProjectName').value = projectName;
@@ -1195,6 +1470,7 @@ $nama_user = $user ? $user['name'] : 'Guest';
         function closeEditProjectModal() {
             document.getElementById('editProjectModal').style.display = 'none';
         }
+
         function confirmDeleteProject(projectId) {
             if (confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
                 // Redirect to the delete_project.php script with the project ID
@@ -1269,9 +1545,9 @@ $nama_user = $user ? $user['name'] : 'Guest';
                 });
             }
         }
-        
 
-        function confirmDeleteTask(taskId, taskName) {
+
+        function confirmDelete(taskId, taskName) {
             Swal.fire({
                 title: 'Hapus Task?',
                 text: `Yakin ingin menghapus task "${taskName}"?`,
@@ -1288,13 +1564,14 @@ $nama_user = $user ? $user['name'] : 'Guest';
         }
 
         function resetSearch() {
-        // Clear the search input
-        document.querySelector('.search-input').value = '';
-        
-        // Redirect to the same page without search parameters
-        window.location.href = 'index.php?project_id=<?= (int) $project_id ?>';
-    }
+            // Clear the search input
+            document.querySelector('.search-input').value = '';
+
+            // Redirect to the same page without search parameters
+            window.location.href = 'index.php?project_id=<?= (int) $project_id ?>';
+        }
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
